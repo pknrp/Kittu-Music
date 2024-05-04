@@ -12,8 +12,8 @@ from VIPMUSIC.mongo.afkdb import add_afk, is_afk, remove_afk
 async def active_afk(_, message: Message):
     if message.sender_chat:
         return
-    APP = f"{app.id}"
-    if message.from_user.APP:
+    
+    if message.app.id:
         return
     user_id = message.from_user.id
     verifier, reasondb = await is_afk(user_id)
