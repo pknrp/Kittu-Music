@@ -13,7 +13,7 @@ async def active_afk(_, message: Message):
     if message.sender_chat:
         return
     
-    if message.app.id:
+    if message.from_user.id == app.id:
         return
     user_id = message.from_user.id
     verifier, reasondb = await is_afk(user_id)
