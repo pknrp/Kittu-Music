@@ -10,7 +10,7 @@ from VIPMUSIC.mongo.afkdb import add_afk, is_afk, remove_afk
 
 @app.on_message(filters.command(["afk", "brb"], prefixes=["/", "!"]))
 async def active_afk(_, message: Message):
-    if message.sender_chat or message.app:
+    if message.sender_chat or message.app.id:
         return
     user_id = message.from_user.id
     verifier, reasondb = await is_afk(user_id)
